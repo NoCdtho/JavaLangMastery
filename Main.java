@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String[] args){
 
+        Bike bike = new Bike();
+        bike.go();
+
         Hero hero = new Hero("SpiderMan", 19, "spideySense & super Strength");
         System.out.println(hero);         
 
@@ -34,11 +37,15 @@ public class Main {
 class Car{
     String model = "Ford";
     String color = "red"; 
+    
+
 
     String car;
     Car(String carr){
         this.car = carr;
     }
+
+
 
     public String toString(){
         return model+"\n"+color;
@@ -85,5 +92,15 @@ class Hero extends Person{
     }
     public String toString(){
         return super.toString()+"\n"+power;
+    }
+}
+
+// abstaction class cannot be instantiated and the methods don't contain body.
+abstract class vehicle{
+    abstract void go();
+} 
+class Bike extends vehicle{
+    void go(){
+        System.out.println("He his riding his bike");
     }
 }
