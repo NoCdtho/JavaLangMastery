@@ -10,7 +10,7 @@ public class FirstGui {
 	JOptionPane.showMessageDialog(null, "The age is "+age);
 
  	double height = Double.parseDouble(JOptionPane.showInputDialog("ENter height: "));
-	JOptionPane.showMessageDialog(null, "mfs height is:  ");
+	JOptionPane.showMessageDialog(null, "mfs height is:  "+height);
     }
 }
  
