@@ -5,12 +5,24 @@
     --> One we can do that by creating a copy method or new constructor of the same class that use the copy method.
     3. Polymorphism:
     --> ability of an object to identify as more then one type
+    4. Dynamic polymorphism:
+    --> same thing as above but polymorphism is done in runtime 
 */
+
+import java.util.Scanner;
 
 public class topics2 {
     public static void main(String args[]){
         Car car = new Car("BMW", "i200", "Red");
         Car car2 = new Car("Audi", "x40" ,"Silver");
+        cycle cycle = new cycle();
+        Bike bike = new Bike();
+
+        Vehicle V[] =  {car, cycle, car2, bike};
+
+        for (Vehicle i: V){
+            i.go();
+        }
 
     /* Never do this car=car2 this changes the memory pointer of car to point to memory 
     address of car2 
@@ -46,11 +58,31 @@ public class topics2 {
         System.out.println(car3.getcolor());
         System.out.println(car3.getmodel());
         System.out.println(car3.getmake());
+
+        // Below code dynamic encapsulation
+        Scanner sc = new Scanner(System.in);
+        Animal animal; 
+
+        System.out.println("choise something 1 or 0");
+        int choice = sc.nextInt();
+        if(choice == 1){
+            animal = new cat();
+            animal.speak();
+        }
+        else if(choice == 0){
+          animal = new dog();
+          animal.speak();
+        }
+        else{
+            System.out.println("invalid input ekkhhhh");
+        }
     }
+ 
+    
 }
 
 // This class is used for understanding of moving objects
-class Car{
+class Car extends Vehicle{
     private String make;
     private String model;
     private String color;
@@ -96,6 +128,45 @@ class Car{
         this.setmodel(x.getmodel());
     }
 
+    public void go(){
+        System.out.println("The car is moving");
+    }
+}
+// Below 3 classes for the understanding of encapsulations
+class Vehicle{
+    public void go(){
+        System.out.println("The vehicle is moving.");
+    }
+}
+class Bike extends Vehicle{
+    @Override
+    public void go(){
+        System.out.println("The Bike is moving.");
+    }
+
+}
+class cycle extends Vehicle{
+    @Override
+    public void go(){
+        System.out.println("Bicycle is moving.");
+    }
 }
 
-
+// Below classes will be made dynamic encapsulations
+class Animal{
+    public void speak(){
+        System.out.println("");
+    }
+}
+class cat extends Animal{
+    @Override
+     public void speak(){
+        System.out.println("meou");
+    }
+}
+class dog extends Animal{
+    @Override
+    public void speak(){
+        System.out.println("Bhauuu");
+    }  
+}
