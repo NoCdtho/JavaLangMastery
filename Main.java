@@ -1,3 +1,7 @@
+/*Topics in this file are:
+    inheritence, abstaction, super, toString()
+*/
+
 public class Main {
     public static void main(String[] args){
 
@@ -20,43 +24,33 @@ public class Main {
         Food food2 = new Food("pizza");
         Food food3 = new Food("corn");
 
-        Food[] refrigerator = new Food[3];
+        Food[] refrigerator = new Food[4];
 
         refrigerator[0] = food1;
         refrigerator[1] = food2;
         refrigerator[2] = food3;
+        refrigerator[3] =  food3; 
 
-        // System.out.println(refrigerator[0].name);
-        // System.out.println(refrigerator[1].name);
-        // System.out.println(refrigerator[2].name);
+        System.out.println(refrigerator[0].name);
+        System.out.println(refrigerator[1].name);
+        System.out.println(refrigerator[2].name);
+        System.out.println(refrigerator[3].name);
     }
 }
 
-//learn to use toString in class Car and Main class 
+// overriding the toString method to convert the confusing reference of object into readable format.
 // Learn object passing using class garage and Main class 
 class Car{
     String model = "Ford";
     String color = "red"; 
-    
-
-
     String car;
+    
     Car(String carr){
         this.car = carr;
     }
-
-
-
+    // Overring the tostring method that the object can access the attributes
     public String toString(){
         return model+"\n"+color;
-    }
-}
-
-// created array of objects used this class as an array
-class Food{
-    String name;
-    Food(String name) {
-        this.name=name;
     }
 }
 
@@ -67,7 +61,15 @@ class Garage{
     }
 }
 
-// used this class for super keyword 
+// Created array of objects used this class as an array
+class Food{
+    String name;
+    Food(String name) {
+        this.name=name;
+    }
+}
+
+/* The person class and hero class both are used for toString and Super keyword */
 class Person{
     String name;
     int age;
@@ -82,7 +84,6 @@ class Person{
     }
 }
 
-// used this class for super keyword
 class Hero extends Person{
     String power;
 
@@ -95,7 +96,12 @@ class Hero extends Person{
     }
 }
 
-// abstaction class cannot be instantiated and the methods don't contain body.
+/* 
+    abstract class cannot be instantiated and the methods don't contain body.
+    provides security to the class since no object cannot be created of the class.
+    Below class are used to abstraction
+*/
+
 abstract class vehicle{
     abstract void go();
 } 
