@@ -2,7 +2,7 @@
     inheritence, abstaction, super, toString()
 */
 
-public class Main {
+public class topics1 {
     public static void main(String[] args){
 
         Bike bike = new Bike();

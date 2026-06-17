@@ -76,6 +76,7 @@ public class topics2 {
         else{
             System.out.println("invalid input ekkhhhh");
         }
+        sc.close();
     }
  
     
