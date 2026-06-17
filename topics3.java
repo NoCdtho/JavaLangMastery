@@ -2,6 +2,9 @@
     1. file class
     2. type checking:
     This is nothing just conversion of datatype for a value
+    3. static keyword:
+    assigning a variable, method, class makes them accessible by all the object of that class.
+    
  */
 
 public class topics3 {
@@ -11,6 +14,14 @@ public class topics3 {
         t.double_int();
         t.int_String();
         t.int_double();
+
+        System.out.println("num. of moon before assigning to any planner: " + Solar.Moon);
+        System.out.println("Number of Sun same for all in our solar: " + Solar.Sun);
+        new Solar.earth();
+        System.out.println("For earth " + Solar.Moon);
+        new Solar.mars();
+        System.out.println("For mars " + Solar.Moon);
+
     }    
 }
 
@@ -44,3 +55,27 @@ class typeChecking{
         System.out.println("converted from String: "+ k + "to int : " + ans);
     }
 } 
+
+/* create static variable 
+    create inner class 
+    create static method 
+    Note: when we make a static block then the attributes only belongs to the outer class members 
+*/
+class Solar{
+    static int Moon;
+    static int Sun = 1;
+    Solar(){
+
+    }
+    static class earth{
+        int Moon;
+        earth(){
+            Solar.Moon = 1; 
+        }
+    }
+    static class mars{
+        mars(){
+            Solar.Moon = 2;
+        }
+    }
+}

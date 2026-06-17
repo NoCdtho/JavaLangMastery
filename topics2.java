@@ -77,9 +77,7 @@ public class topics2 {
             System.out.println("invalid input ekkhhhh");
         }
         sc.close();
-    }
- 
-    
+    }   
 }
 
 // This class is used for understanding of moving objects
