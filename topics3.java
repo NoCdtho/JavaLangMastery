@@ -7,6 +7,8 @@
     assigning a variable, method, class makes them accessible by all the object of that class.
     4. enums:
     are classes that are used to store multiple constants.
+    5. interface:
+    they are like classes but they don't have any implementation of the methods, they only contain signatures and fields
  */
 
 public class topics3 {
@@ -34,6 +36,10 @@ public class topics3 {
             String newValue = level2.write();
             System.out.println(newValue);
         } 
+
+        // Interface
+        firstinterface obj = new useInterface();
+        System.out.println(obj.sayhello());
     }    
 }
 
@@ -105,3 +111,18 @@ class Solar{
         return description;
     }
 } 
+
+
+// Create a interface
+interface firstinterface{
+    public String myinterfaceValue = "Hello";
+    public String sayhello();
+}
+
+// create a class to use the interface
+class useInterface implements firstinterface{
+    @Override
+    public String sayhello(){
+        return myinterfaceValue;
+    }
+}
