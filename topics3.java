@@ -3,15 +3,23 @@
 
     2. type checking:
     This is nothing just conversion of datatype for a value.
+
     3. static keyword:
     assigning a variable, method, class makes them accessible by all the object of that class.
+
     4. enums:
     are classes that are used to store multiple constants.
+
     5. interface:
-    they are like classes but they don't have any implementation of the methods, they only contain signatures and fields
+    they are like classes but they don't have any implementation of the methods, they only contain signatures and fields.
+    
     6.java records:
     this is special class that defines immutable data-only. The java records consists one or more fields which acts as member/instance 
     variables in a regular java class. And we don't have to write the boilerplate code to access them.
+
+    7. instance initializer block and static block:
+    this is block is excuted at the time of object creation and will be executed evrytime a new object is created.
+    and the static block will execute at the time class loading.
  */
 
 public class topics3 {
@@ -58,6 +66,9 @@ public class topics3 {
         System.out.println("Type of singer 2 changed from: " + singer2.type()+ " to: " + singer2.inSmallLetter());
         System.out.println("Nd age of singer 1 change from " + singer.age() + " to " + Singer.toLargeLetter(singer));
 
+        // intance initialzier block and static block
+        blocktest obj3 = new blocktest();
+        System.out.println(obj3); 
 
     }
 }
@@ -161,4 +172,19 @@ class useInterface implements firstinterface{
     static String toLargeLetter(Singer singer ){
         return singer.age.toUpperCase();
     }
-} 
+}
+
+// Instance initializer block
+class blocktest{
+    static{
+        System.out.println("This is the static initilizer blck 1 ");
+
+    }
+    {
+        System.out.println("hgelloe");
+        System.out.println("acai");
+    }
+    public String toString(){
+        return "print this instead of the address of the object";
+    }
+}
