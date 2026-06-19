@@ -20,7 +20,10 @@
     7. instance initializer block and static block:
     this is block is excuted at the time of object creation and will be executed evrytime a new object is created.
     and the static block will execute at the time class loading.
- */
+
+    8. exception handling:
+    3 types of error might occur one at compile time, runtime and other like (out of memory). There are many ways to handle using NullPointer Exception, IOException and many more    
+     */
 
 public class topics3 {
     public static void main(String[] main){
@@ -83,6 +86,10 @@ public class topics3 {
         test.passingAsValues();
         nonprimitiveTest test2 = new  nonprimitiveTest();
         test2.passingAsObject();
+
+        // Exception hanlding
+        ExceptionTest tt = new ExceptionTest();
+        tt.test();
         }
 }
 
@@ -253,4 +260,24 @@ class nonprimitiveTest{
             t1.x++;
             t2.x++;
     }
+}
+
+// Exception handling
+class ExceptionTest{
+    void test(){
+        try{
+            int num = converttonumber("4");
+            System.out.println("wanted to show something: " + num);
+        }
+        catch(Exception e){
+            System.out.println("What rar u saying");
+        } 
+        finally{
+            System.out.println("Exception is being tested reached final block");
+        }
+    }
+    int converttonumber(String i){
+        return Integer.parseInt(i);
+    }
+   
 }
