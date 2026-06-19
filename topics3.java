@@ -70,6 +70,13 @@ public class topics3 {
         blocktest obj3 = new blocktest();
         System.out.println(obj3); 
 
+        // Static binding and dynamic binding
+        AnimalActivity animal = new AnimalActivity();
+        animal.makeNoise(1);
+        animal.makeNoise();
+
+        AnimalActivity animal2 = new Dog();
+        animal2.makeNoise();
     }
 }
 
@@ -128,7 +135,6 @@ class Solar{
     }
 }
 
-
 // Create a enum write a block with local varible and method 
  enum Level{
     high("highest point"), medium("average points"), low("below Average");
@@ -141,7 +147,6 @@ class Solar{
         return description;
     }
 } 
-
 
 // Create a interface
 interface firstinterface{
@@ -185,6 +190,26 @@ class blocktest{
         System.out.println("acai");
     }
     public String toString(){
-        return "print this instead of the address of the object";
+        return "converted the address of the blocktest object into this printed string";
+    }
+}
+
+// static vs dynamic binding
+// Below method overloading will be done at compile time thus it is static binding 
+class AnimalActivity{
+   void makeNoise(){
+    System.out.println("makiing sometihng but dontknow");
+   }
+   void makeNoise(int repetation){
+    while(repetation != 0){
+        System.out.println("noise repetation " + repetation);
+        repetation--;
+    }
+   }
+}
+// Below method override will be resolved at runtime thus it is dynamic binding  
+class Dog extends AnimalActivity{
+    void makeNoise(){
+        System.out.println("Woof Woof");
     }
 }
