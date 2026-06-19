@@ -77,7 +77,13 @@ public class topics3 {
 
         AnimalActivity animal2 = new Dog();
         animal2.makeNoise();
-    }
+
+        // passing values in argument as primitive and objects
+        primitivesUnitTest test = new  primitivesUnitTest();
+        test.passingAsValues();
+        nonprimitiveTest test2 = new  nonprimitiveTest();
+        test2.passingAsObject();
+        }
 }
 
 class typeChecking{
@@ -211,5 +217,40 @@ class AnimalActivity{
 class Dog extends AnimalActivity{
     void makeNoise(){
         System.out.println("Woof Woof");
+    }
+}
+
+// Passing of data as object and primitive type
+class primitivesUnitTest{
+    public void passingAsValues(){
+        int x = 10;
+        int y = 20;
+        System.out.println("They are the values of x and y " + x + " " + y);
+        modify(x, y);
+        System.out.println("The values of x and y are: " + x + " " + y);
+    }
+    static void modify(int x1 , int x2){
+            x1++;
+            x2++;
+    }
+}
+
+class nonprimitiveTest{
+    int x;
+    nonprimitiveTest(){
+    }
+    nonprimitiveTest(int x){
+        this.x = x;
+    }
+    public void passingAsObject(){
+        nonprimitiveTest val = new nonprimitiveTest(1);
+        nonprimitiveTest val2 = new nonprimitiveTest(12);
+        System.out.println("value of x inside 2 objects before modify function call: " + val.x + " and " + val2.x);
+        modifyobject(val, val2);
+        System.out.println("value of x inside 2 objects after modify call: " + val.x + " and " +val2.x);
+    }
+    static void modifyobject(nonprimitiveTest t1, nonprimitiveTest t2){
+            t1.x++;
+            t2.x++;
     }
 }
