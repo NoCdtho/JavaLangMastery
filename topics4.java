@@ -1,6 +1,7 @@
 /* Topics:
 1. lamda expression: 
-This is used as functionl programming 
+This is used as functionl programming. It is used to implement in the place of unimplemented of a object (for interfaces). 
+This can written in place of both constructor and refence variable.
 */
 
 public class topics4 {
@@ -25,11 +26,17 @@ public class topics4 {
                 System.out.println("creating the object and passing the arg as anonymous interface");
             }
         });
-        
+
         // we use lamda expression instead of anonymouse inheritance implementaion.
         obj.addStateListener(
-            () -> System.out.println("Using the lamda function overwritting the abstract method again of the interface")
+            () -> {System.out.println("Using the lamda function overwritting the abstract method again of the interface");}
         );
+
+        // creating the instance of the interface using lamda
+        stateChangeListener obj2 = () -> {
+            System.out.println("This is what is it");
+        };
+        obj2.onStateChange();
     }
 };
 
