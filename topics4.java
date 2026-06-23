@@ -8,6 +8,9 @@ This are used to give the give meta data of the source code
 mainly there are 4: @Deprecated, @override, @suppressWarnings, @Contended 
 I can create my own annotations also I will code only that.
 
+3.module:
+This is way of creating packages in java.
+
 */
 
 import java.lang.annotation.Retention;
@@ -64,7 +67,7 @@ public class topics4 {
     String[] Workedbefore();
     String colleage() default "James";
 }
-
+// Below classes is annoted by the annotation I created
 @myAnnotation(name = "martin", age = 18, Workedbefore = "producer")
 class useMyAnnotaion{
 
