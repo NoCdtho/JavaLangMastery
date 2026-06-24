@@ -27,27 +27,15 @@ import java.lang.annotation.Target;
 
 public class topics4 {
     public static void main(String[] args ){
-        // THis interface will be used to pass new and old state below.
-        interface stateChangeListener{
-            public void onStateChange();
-        }
-
-        //  pass the state in which the changes will be made also called listener, this is the state event listener.
-        class stateOwner{
-            void addStateListener(stateChangeListener var){
-                System.out.println("State is passed in the Listener");
-                var.onStateChange();
-            };
-        }
-        
-        // instance of stateOwner is created and passed the implementation of interface is passed as arguments instead of another reference variable of stateChangeListener
+            
+        // instance of stateOwner is created and passed the implementation of interface as arguments instead of another reference variable of stateChangeListener
         stateOwner obj = new stateOwner();
         obj.addStateListener(new stateChangeListener(){
             public void onStateChange(){
                 System.out.println("creating the object and passing the arg as anonymous interface");
             }
         });
-
+        
         // we use lamda expression instead of anonymouse inheritance implementaion.
         obj.addStateListener(
             () -> {System.out.println("Using the lamda function overwritting the abstract method again of the interface");}
@@ -59,7 +47,22 @@ public class topics4 {
         };
         obj2.onStateChange();
     }
-};
+}
+
+
+     // THis interface will be used to pass new and old state below.
+    interface stateChangeListener{
+        public void onStateChange();
+    }
+
+    //  pass the state in which the changes will be made also called listener, this is the state event listener.
+    class stateOwner{
+    void addStateListener(stateChangeListener var){
+        System.out.println("State is passed in the Listener");
+            var.onStateChange();
+        }
+    }
+
 
 // Annotation
 @Retention(RetentionPolicy.CLASS) //This is the default retention annotation behaviour and there 2 more .RUNTIME and .SOURCE
@@ -79,9 +82,19 @@ class useMyAnnotaion{
 }
 
 // Optional
-void optionalTest(){
+class optionalTest{
     String name = "Samueal";
     // used of() method 
-    Optional<String> op = Optional.of(name);
-    System.out.println(op.isPresent());
+    Optional<String> opt = Optional.of(name);
+    Boolean v1 = opt.isPresent();
+
+    // use of .empty() method
+    String nullname = null;
+    Optional<String> opt2 = Optional.empty();
+    Boolean v2 = opt.isPresent(); 
+
+    void checkOptional(){
+        System.out.println(v1);
+        System.out.println(v2);
+    }
 }
