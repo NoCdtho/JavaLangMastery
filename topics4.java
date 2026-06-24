@@ -84,17 +84,27 @@ class useMyAnnotaion{
 // Optional
 class optionalTest{
     String name = "Samueal";
-    // used of() method 
+    // used .of() method 
     Optional<String> opt = Optional.of(name);
     Boolean v1 = opt.isPresent();
 
     // use of .empty() method
     String nullname = null;
     Optional<String> opt2 = Optional.empty();
-    Boolean v2 = opt.isPresent(); 
+    Boolean v2 = opt2.isPresent(); 
 
+    // use of .ofNullable(variableName)
+    Optional<String> opt3 = Optional.ofNullable(nullname);
+    Boolean v3 = opt3.isPresent();
+
+   
+    Optional<String> opt4 = Optional.of("Martin");
+   
     void checkOptional(){
         System.out.println(v1);
         System.out.println(v2);
+        System.out.println(v3);
+        // use ifPresent()
+        opt4.ifPresent((name) -> System.out.println(name.length()));
     }
 }
