@@ -11,8 +11,13 @@ I can create my own annotations also I will code only that.
 3.module:
 This is way of creating packages in java.
 
+4.optional:
+This are container objects that may or may not contain non-null values.
+This are used to represent the absence of value.
+This provide methods to check if a value is present or not and to handle cases where value is not present in more controlled manner
 */
 
+import java.util.Optional;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Documented;
@@ -71,4 +76,12 @@ public class topics4 {
 @myAnnotation(name = "martin", age = 18, Workedbefore = "producer")
 class useMyAnnotaion{
 
+}
+
+// Optional
+void optionalTest(){
+    String name = "Samueal";
+    // used of() method 
+    Optional<String> op = Optional.of(name);
+    System.out.println(op.isPresent());
 }
