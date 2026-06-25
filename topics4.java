@@ -104,7 +104,10 @@ class optionalTest{
 
     // use of .orElse(): this is used if the created optional has null value if it has then .orEles will be executed.
     String newName =  Optional.ofNullable(nullname).orElse("maachou");
-   
+
+    // use of .orElseGet(): this is similar as orELse() but instead of taking the optional value to return it takes supplier functional interface. 
+    String result = Optional.ofNullable(nullname).orElseGet(() -> "mathew");
+
     void checkOptional(){
         System.out.println(v1);
         System.out.println(v2);
@@ -112,5 +115,6 @@ class optionalTest{
         // use of .ifPresent() method 
         opt4.ifPresent((name) -> System.out.println(name.length()));
         System.out.println(newName);
+        System.out.println(result);
     }
 }
