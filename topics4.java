@@ -94,7 +94,7 @@ class optionalTest{
     // use of .empty() method
     String nullname = null;
     Optional<String> opt2 = Optional.empty();
-    Boolean v2 = opt2.isPresent(); 
+    Boolean v2 = opt2.isPresent();
 
     // use of .ofNullable(variableName)
     Optional<String> opt3 = Optional.ofNullable(nullname);
@@ -105,8 +105,17 @@ class optionalTest{
     // use of .orElse(): this is used if the created optional has null value if it has then .orEles will be executed.
     String newName =  Optional.ofNullable(nullname).orElse("maachou");
 
+    // flaw of .orElse()
+    String getDefault(){
+        System.out.println("getDefault method is called");
+        return "flawed statement";
+    }
+    String cooked = Optional.ofNullable(name).orElse(getDefault()); // here the getDefault is called and a redundant or unused object is returned.
+
     // use of .orElseGet(): this is similar as orELse() but instead of taking the optional value to return it takes supplier functional interface. 
     String result = Optional.ofNullable(nullname).orElseGet(() -> "mathew");
+
+
 
     void checkOptional(){
         System.out.println(v1);
@@ -116,5 +125,7 @@ class optionalTest{
         opt4.ifPresent((name) -> System.out.println(name.length()));
         System.out.println(newName);
         System.out.println(result);
+        System.out.println(cooked);
     }
+
 }
