@@ -46,6 +46,9 @@ public class topics4 {
             System.out.println("This is what is it");
         };
         obj2.onStateChange();
+
+        optionalTest optt = new optionalTest();
+        optt.checkOptional();
     }
 }
 
@@ -97,14 +100,17 @@ class optionalTest{
     Optional<String> opt3 = Optional.ofNullable(nullname);
     Boolean v3 = opt3.isPresent();
 
-   
     Optional<String> opt4 = Optional.of("Martin");
+
+    // use of .orElse(): this is used if the created optional has null value if it has then .orEles will be executed.
+    String newName =  Optional.ofNullable(nullname).orElse("maachou");
    
     void checkOptional(){
         System.out.println(v1);
         System.out.println(v2);
         System.out.println(v3);
-        // use ifPresent()
+        // use of .ifPresent() method 
         opt4.ifPresent((name) -> System.out.println(name.length()));
+        System.out.println(newName);
     }
 }
