@@ -84,7 +84,7 @@ class useMyAnnotaion{
 
 }
 
-// Optional
+// Optionals
 class optionalTest{
     String name = "Samueal";
     // used .of() method 
@@ -110,22 +110,32 @@ class optionalTest{
         System.out.println("getDefault method is called");
         return "flawed statement";
     }
+
     String cooked = Optional.ofNullable(name).orElse(getDefault()); // here the getDefault is called and a redundant or unused object is returned.
+    String cookedAgain = Optional.ofNullable(name).orElseGet(this::getDefault);//tried to find the redunctant object creation here also.
 
     // use of .orElseGet(): this is similar as orELse() but instead of taking the optional value to return it takes supplier functional interface. 
     String result = Optional.ofNullable(nullname).orElseGet(() -> "mathew");
 
 
-
+    // used this function to run the executables 
     void checkOptional(){
         System.out.println(v1);
         System.out.println(v2);
         System.out.println(v3);
+
         // use of .ifPresent() method 
         opt4.ifPresent((name) -> System.out.println(name.length()));
+
         System.out.println(newName);
         System.out.println(result);
         System.out.println(cooked);
-    }
 
+        // Exception with orElseThrow()
+        String nullname = "null";
+        String e = Optional.ofNullable(nullname).orElseThrow(
+            IllegalArgumentException::new
+        );
+        System.out.println(e);
+    }
 }
