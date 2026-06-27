@@ -1,20 +1,25 @@
 /* Topics:
 1. lamda expression: 
-This is used as functionl programming. It is used to implement in the place of unimplemented of a object (for interfaces). 
-This can written in place of both constructor and refence variable.
+This is used as functionl programming. It is used to implement in the place of unimplemented of a object 
+(for interfaces). This can written in place of both constructor and refence variable.
 
-2.annotation:
+2. annotation:
 This are used to give the give meta data of the source code
 mainly there are 4: @Deprecated, @override, @suppressWarnings, @Contended 
 I can create my own annotations also I will code only that.
 
-3.module:
+3. module:
 This is way of creating packages in java.
 
-4.optional:
+4. optional:
 This are container objects that may or may not contain non-null values.
 This are used to represent the absence of value.
-This provide methods to check if a value is present or not and to handle cases where value is not present in more controlled manner
+This provide methods to check if a value is present or not and to handle cases where value is not present in more 
+controlled manner.
+
+5. Dependency Injection:
+When one class depends another then its known as depent and the values that are needed to create the dependent
+class is known as injection. 
 */
 
 import java.util.Optional;
@@ -49,6 +54,12 @@ public class topics4 {
 
         optionalTest optt = new optionalTest();
         optt.checkOptional();
+
+        // creating the object used for Dependency injection
+        MyDao dao = new MyDao("hello", "this is URL", "noCode", 1002);
+        System.out.println(dao);
+        DataSource dss = dao.ds;
+        System.out.println(dss);
     }
 }
 
@@ -80,9 +91,7 @@ public class topics4 {
 }
 // Below classes is annoted by the annotation I created
 @myAnnotation(name = "martin", age = 18, Workedbefore = "producer")
-class useMyAnnotaion{
-
-}
+class useMyAnnotaion{}
 
 // Optionals
 class optionalTest{
@@ -145,4 +154,35 @@ class optionalTest{
         System.out.println(answer);
         System.out.println(isName);
     }
+}
+
+// Dependency injection
+interface DataSource{ 
+        //.... 
+}
+class DataSourceImpl implements DataSource{
+        String Driver;
+        String URL;
+        String user;
+        int password;
+        DataSourceImpl(String Driver, String URL, String user, int password){
+            this.Driver=Driver;
+            this.URL=URL;
+            this.user=user;
+            this.password=password;
+        }
+        public String toString(){
+            return "successfully object created of type DataSourceImpl";
+        }
+}
+// This is a dependent class and to make it reusable use constructor or setter
+class MyDao implements DataSource{
+        protected DataSource ds = null;
+        // this constructor defines the proper object creation.
+        MyDao(String Driver, String URL, String user, int password){
+            this.ds = new DataSourceImpl(Driver, URL, user, password);
+        }
+        public String toString(){
+            return "object created of type MyDao";
+        }
 }
