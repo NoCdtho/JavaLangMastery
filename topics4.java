@@ -175,6 +175,7 @@ class DataSourceImpl implements DataSource{
             return "successfully object created of type DataSourceImpl";
         }
 }
+
 // This is a dependent class and to make it reusable use constructor or setter
 class MyDao implements DataSource{
         protected DataSource ds = null;
