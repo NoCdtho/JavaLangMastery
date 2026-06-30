@@ -2,9 +2,12 @@
  1. Java IO:
  Java IO is an api that is used to read and write data on streams, files, Pipes
  Network connections, in-memory buffers(array), System.in, System.out and System.error.
+ 2. Files and API:
+ I specifically studied How to make http get and post request and read and write the data on the server.
 */
 
 import java.io.*;
+import java.net.*;
 
 public class Topics5 {
     public static void main(String[] args){
@@ -45,5 +48,36 @@ class write{
         char[] ch = new char[]{'I', 'n', 'u'};
         fileWriter.write(ch);
         fileWriter.close(); 
+    }
+}
+
+// API
+class HttpURLConnectionExample{
+    private final static String USER_AGENT =  "chrome";
+    private final static String GET_URL =  "randomURL"; //URL used to retrive data from 
+    private final static String POST_URL = "randomURL/write"; //URL used to write data on.
+    private final static String POST_PARAMS =  "userName=Rohit";
+
+    private static void sendget() throws IOException{
+        URL obj = new URL(GET_URL); //used to parse the URL 
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection(); //create the connection
+        con.setRequestMethod("GET"); //used to send the get method request which is to retrive data from server
+        con.setRequestProperty("USER_AGENT", USER_AGENT); //defines the request header like what platform, os the user is etc
+        int responseCode = con.getResponseCode();
+        System.out.println("THe connection status: " + responseCode);
+        if(responseCode == HttpURLConnection.HTTP_OK){
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while((inputLine = in.readLine()) != null){
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response.toString());
+        }
+        else{
+            System.out.println("call get method again");
+        }
     }
 }
