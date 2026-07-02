@@ -54,19 +54,20 @@ public class Topics5 {
         multiThreadThing obj2 = new multiThreadThing();
 
        
-        for(int i = 0; i < 3; i++){
-            multiThreadThing obj3 = new multiThreadThing(i);
-            Thread mainThread = new Thread(obj3);
-            mainThread.start();
-            try{
-                mainThread.join();
-            }
-            catch (Exception e) {}
-        }
+        // for(int i = 0; i < 3; i++){
+        //     multiThreadThing obj3 = new multiThreadThing(i);
+        //     Thread mainThread = new Thread(obj3);
+        //     mainThread.start();
+        //     try{
+        //         mainThread.join();
+        //     }
+        //     catch (Exception e) {}
+        // }
 
         // java high order function
          hof hof = new hof();
          hof.fun();
+         hof.revFun();
     }
 }
 
@@ -205,5 +206,28 @@ class hof{
         });
 
         System.out.println(list);
+    }
+
+    // reversing the sort using .reversed()
+    List<String> list2 = new ArrayList<>();
+    void revFun(){
+        list2.add("cherry");
+        list2.add("Apple");
+        list2.add("Banana");
+
+        Comparator<String> var = (String a, String b) -> {
+            return a.compareTo(b);
+        };
+
+        Comparator<String> reversed = var.reversed();
+
+        System.out.println("\nReversed the list: ");
+        Collections.sort(list2, reversed);
+        System.out.println(list2);
+
+        System.out.println("\nReversing the reversed list: ");
+        Collections.sort(list2, var);
+        System.out.println(list2);
+
     }
 }
