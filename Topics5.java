@@ -13,6 +13,9 @@
  4. High order function
  When a func is passed as a argument or a function returns a function then it's considered 
  a higer order functions.
+
+ 5.Java composition
+ Where multiple functions are used to and one functions uses those combined functions.
 */
 
 
@@ -23,6 +26,8 @@ import java.util.function.Predicate;
 
 public class Topics5 {
     public static void main(String[] args){
+        
+        /*JavaIO */
         try{
             read a = new read();
             System.out.println(a.a);
@@ -34,7 +39,7 @@ public class Topics5 {
             System.out.println(e);
         }
 
-        // API        
+        /*API*/        
         try{
             HttpURLConnectionExample.sendget();
         }
@@ -53,17 +58,16 @@ public class Topics5 {
         */
         multiThreadThing obj = new multiThreadThing();
         multiThreadThing obj2 = new multiThreadThing();
-
        
-        // for(int i = 0; i < 3; i++){
-        //     multiThreadThing obj3 = new multiThreadThing(i);
-        //     Thread mainThread = new Thread(obj3);
-        //     mainThread.start();
-        //     try{
-        //         mainThread.join();
-        //     }
-        //     catch (Exception e) {}
-        // }
+        for(int i = 0; i < 3; i++){
+            multiThreadThing obj3 = new multiThreadThing(i);
+            Thread mainThread = new Thread(obj3);
+            mainThread.start();
+            try{
+                mainThread.join();
+            }
+            catch (Exception e) {}
+        }
 
         // java high order function
          hof hof = new hof();
