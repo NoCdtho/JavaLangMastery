@@ -19,6 +19,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Topics5 {
     public static void main(String[] args){
@@ -68,6 +69,10 @@ public class Topics5 {
          hof hof = new hof();
          hof.fun();
          hof.revFun();
+
+        //  Functional Composition
+        functionalComposition fc = new functionalComposition();
+        System.out.println(fc.res);
     }
 }
 
@@ -230,4 +235,21 @@ class hof{
         System.out.println(list2);
 
     }
+}
+
+/*
+Below class uses predicate interface and startWith and endWith functions 
+*/
+class functionalComposition{
+    Predicate<String> one = (text) -> {
+        return text.startsWith("s");
+    };
+    Predicate<String> two = (text) -> {
+        return text.endsWith("a");
+    };
+    Predicate<String> answer = one.and(two);
+
+    String text = "shut up you more nea";
+
+    boolean res = answer.test(text);
 }
