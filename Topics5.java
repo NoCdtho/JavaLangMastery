@@ -9,11 +9,16 @@
 
  3. Concurrency:
  This is the process where multiple task can be executed at same without waiting for one process to complete.
+
+ 4. High order function
+ When a func is passed as a argument or a function returns a function then it's considered 
+ a higer order functions.
 */
 
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 public class Topics5 {
     public static void main(String[] args){
@@ -36,19 +41,32 @@ public class Topics5 {
             System.out.println(e);
         }
 
-        // Concurrency
+        /* Concurrency
+            start() is used to create new thread evrytime its called and run() executes the code in the same thread
+            obj.start();
+            obj2.start();
+
+            running multiple threads and tracking which thread is executing.
+
+            join() method is used when we want to stop the program until the thread is executed.
+        */
         multiThreadThing obj = new multiThreadThing();
         multiThreadThing obj2 = new multiThreadThing();
 
-        // start() is used to create new thread evrytime its called and run() executes the code in the same thread
-        // obj.start();
-        // obj2.start();
-
-        // running multiple threads and tracking which thread is executing what
+       
         for(int i = 0; i < 3; i++){
             multiThreadThing obj3 = new multiThreadThing(i);
-            obj3.start();
+            Thread mainThread = new Thread(obj3);
+            mainThread.start();
+            try{
+                mainThread.join();
+            }
+            catch (Exception e) {}
         }
+
+        // java high order function
+         hof hof = new hof();
+         hof.fun();
     }
 }
 
@@ -143,11 +161,14 @@ class HttpURLConnectionExample{
     }
 }
 
-/*Below code will used to learn the basis of concurrency
+/* Thread and Concurrency 
+Below code will used to learn the basis of concurrency
 in the first the run method the thread is sleeping for 1 second
+we can also implement a interface runnable but then we have to create a object of Thread class 
+to call the start(). 
  */
 
-class multiThreadThing extends Thread {
+class multiThreadThing implements Runnable {
     multiThreadThing(){}
 
     int a;
@@ -164,5 +185,25 @@ class multiThreadThing extends Thread {
             }
             catch (Exception e){}
         }
+    }
+}
+
+/*
+Java higher order functions
+in the fun function the sorting function takes a list and lamda expression,
+so its takes a function as a argument and returns a list of sorted items 
+*/
+class hof{
+    List<String> list = new ArrayList<>();
+    void fun(){
+        list.add("One");
+        list.add("Two");
+        list.add("Four");
+
+        Collections.sort(list, (String a, String b) -> {
+        return a.compareTo(b);
+        });
+
+        System.out.println(list);
     }
 }
