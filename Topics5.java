@@ -2,8 +2,13 @@
  1. Java IO:
  Java IO is an api that is used to read and write data on streams, files, Pipes
  Network connections, in-memory buffers(array), System.in, System.out and System.error.
+
  2. Files and API:
  I specifically studied How to make http get and post request and read and write the data on the server.
+ convered the how to read and write files and make API calls with a server used get and post function.
+
+ 3. Concurrency:
+ This is the process where multiple task can be executed at same without waiting for one process to complete.
 */
 
 
@@ -30,11 +35,26 @@ public class Topics5 {
         catch(Exception e){
             System.out.println(e);
         }
+
+        // Concurrency
+        multiThreadThing obj = new multiThreadThing();
+        multiThreadThing obj2 = new multiThreadThing();
+
+        // start() is used to create new thread evrytime its called and run() executes the code in the same thread
+        // obj.start();
+        // obj2.start();
+
+        // running multiple threads and tracking which thread is executing what
+        for(int i = 0; i < 3; i++){
+            multiThreadThing obj3 = new multiThreadThing(i);
+            obj3.start();
+        }
     }
 }
 
 
-// Reading a file using FileReader class
+/* below read and write class are used to read a txt file using filereader class 
+*/
 class read{
      String a="";
     read() throws Exception{
@@ -49,8 +69,6 @@ class read{
         filereader.close();
     }
 }
-
-// writing in the file
 class write{
     write() throws Exception{
         FileWriter fileWriter = new FileWriter("E:\\PROJECTS\\JavaLanguage\\file.txt", true);
@@ -60,7 +78,10 @@ class write{
     }
 }
 
-// API
+/* API created using sendget() and sendpost() are created to get the response
+of the requested URL.
+Applied get method and post method here using HttpURLConnection class 
+*/
 class HttpURLConnectionExample{
     private final static String USER_AGENT =  "chrome";
     private final static String GET_URL =  "randomURL"; //URL used to retrive data from 
@@ -119,5 +140,29 @@ class HttpURLConnectionExample{
             System.out.println("send post method again");
         }
 
+    }
+}
+
+/*Below code will used to learn the basis of concurrency
+in the first the run method the thread is sleeping for 1 second
+ */
+
+class multiThreadThing extends Thread {
+    multiThreadThing(){}
+
+    int a;
+    multiThreadThing(int i){
+        this.a = i;
+    }
+
+    @Override
+    public void run() {
+        for(int i = 1; i < 6; i++){
+            System.out.println(i + " from Thread " + a);
+            try{
+                Thread.sleep(1000);
+            }
+            catch (Exception e){}
+        }
     }
 }
