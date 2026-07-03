@@ -10,12 +10,16 @@
  3. Concurrency:
  This is the process where multiple task can be executed at same without waiting for one process to complete.
 
- 4. High order function
+ 4. High order function:
  When a func is passed as a argument or a function returns a function then it's considered 
  a higer order functions.
 
- 5.Functional composition
+ 5. Functional composition:
  Where multiple functions are used to and one functions uses those combined functions.
+
+ 6. Stream API:
+ Stream API is allows us to apply functional style operations on elements.
+ important part is execution: stream referencing, intermediate actions and terminate function 
 */
 
 
@@ -23,6 +27,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Topics5 {
     public static void main(String[] args){
@@ -57,15 +62,15 @@ public class Topics5 {
         multiThreadThing obj = new multiThreadThing();
         multiThreadThing obj2 = new multiThreadThing();
        
-        for(int i = 0; i < 3; i++){
-            multiThreadThing obj3 = new multiThreadThing(i);
-            Thread mainThread = new Thread(obj3);
-            mainThread.start();
-            try{
-                mainThread.join();
-            }
-            catch (Exception e) {}
-        }
+        // for(int i = 0; i < 3; i++){
+        //     multiThreadThing obj3 = new multiThreadThing(i);
+        //     Thread mainThread = new Thread(obj3);
+        //     mainThread.start();
+        //     try{
+        //         mainThread.join();
+        //     }
+        //     catch (Exception e) {}
+        // }
 
         // java high order function
          hof hof = new hof();
@@ -75,6 +80,10 @@ public class Topics5 {
         //  Functional Composition
         functionalComposition fc = new functionalComposition();
         System.out.println(fc.res);
+
+        // Stream API
+        StreamPractice sp =new StreamPractice();
+        sp.main(); 
     }
 }
 
@@ -183,7 +192,8 @@ class multiThreadThing implements Runnable {
     multiThreadThing(){}
 
     int a;
-    multiThreadThing(int i){
+
+    multiThreadThing(int i) {
         this.a = i;
     }
 
@@ -243,6 +253,7 @@ class hof{
 }
 
 /*
+Functional Composition:
 Below class uses predicate interface and startWith and endWith functions and implements them in the third function.
 */
 class functionalComposition{
@@ -260,5 +271,70 @@ class functionalComposition{
 }
 
 /*
+Stream API
 
 */
+
+class employee{
+     private int SALARY;
+     private String ID;
+     private String NAME;
+
+    // Getter
+    public int getSalary(){
+        return this.SALARY;
+    }
+    public String getId(){
+        return this.ID;
+    }
+    public String getName(){
+        return this.NAME;
+    }
+    // Setter
+    public void setSalary(int salary){
+        this.SALARY =  salary;
+    }
+    public void setId(String id){
+        this.ID = id;
+    }
+    public void setName(String Name){
+        this.NAME =  Name;
+    }
+
+    employee(){};
+    employee(int Salary, String Id, String Name){
+        setSalary(Salary);
+        setId(Id);
+        setName(Name);
+    }
+
+    public String toString(){
+        return "Salary: " + SALARY + " Id: " + ID + " Name: " + NAME;   
+    }
+}
+
+class StreamPractice{
+    employee em1 = new employee(100, "avb1", "danny");
+    employee em2 = new employee(120, "avb2", "elsa");
+    employee em3 = new employee(1204, "avb3", "rae");
+
+    void main(){
+        List<employee> list = new ArrayList<>();
+        list.add(em1);
+        list.add(em2);
+        list.add(em3);
+
+        List<employee> st = list.stream()
+        .map(
+            ls -> new employee(
+                ls.getSalary() * 10,
+                ls.getId(),
+                ls.getName()
+            )
+        )
+        .collect(Collectors.toList());
+
+        System.out.println("The list is: " + st);
+    }
+    
+}
