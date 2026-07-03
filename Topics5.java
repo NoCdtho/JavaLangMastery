@@ -14,7 +14,7 @@
  When a func is passed as a argument or a function returns a function then it's considered 
  a higer order functions.
 
- 5.Java composition
+ 5.Functional composition
  Where multiple functions are used to and one functions uses those combined functions.
 */
 
@@ -47,13 +47,11 @@ public class Topics5 {
             System.out.println(e);
         }
 
-        /* Concurrency
+        /* Concurrency:
             start() is used to create new thread evrytime its called and run() executes the code in the same thread
             obj.start();
             obj2.start();
-
             running multiple threads and tracking which thread is executing.
-
             join() method is used when we want to stop the program until the thread is executed.
         */
         multiThreadThing obj = new multiThreadThing();
@@ -81,7 +79,8 @@ public class Topics5 {
 }
 
 
-/* below read and write class are used to read a txt file using filereader class 
+/* 
+below read and write class are used to read a txt file using filereader class 
 */
 class read{
      String a="";
@@ -106,7 +105,8 @@ class write{
     }
 }
 
-/* API created using sendget() and sendpost() are created to get the response
+/* API: 
+Created API  using sendget() and sendpost() are created to get the response
 of the requested URL.
 Applied get method and post method here using HttpURLConnection class 
 */
@@ -171,7 +171,8 @@ class HttpURLConnectionExample{
     }
 }
 
-/* Thread and Concurrency 
+/*
+Thread and Concurrency:
 Below code will used to learn the basis of concurrency
 in the first the run method the thread is sleeping for 1 second
 we can also implement a interface runnable but then we have to create a object of Thread class 
@@ -199,7 +200,7 @@ class multiThreadThing implements Runnable {
 }
 
 /*
-Java higher order functions
+Java higher order functions:
 in the fun function the sorting function takes a list and lamda expression,
 so its takes a function as a argument and returns a list of sorted items 
 */
@@ -242,7 +243,7 @@ class hof{
 }
 
 /*
-Below class uses predicate interface and startWith and endWith functions 
+Below class uses predicate interface and startWith and endWith functions and implements them in the third function.
 */
 class functionalComposition{
     Predicate<String> one = (text) -> {
@@ -257,3 +258,7 @@ class functionalComposition{
 
     boolean res = answer.test(text);
 }
+
+/*
+
+*/
