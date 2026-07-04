@@ -84,6 +84,15 @@ public class Topics5 {
         // Stream API
         StreamPractice sp =new StreamPractice();
         sp.main(); 
+
+        // Parallel stream using reduce() method
+        List<String> words = Arrays.asList("keo", "mar", "jam");
+        int ans = words.parallelStream()
+        .reduce(0, 
+            (currentCount, word) -> currentCount + word.length(), 
+            (num_stream_A, num_stream_B) -> num_stream_A + num_stream_B
+        );
+        System.out.println("The count from all the stream created: " + ans);
     }
 }
 
@@ -325,13 +334,7 @@ class StreamPractice{
         list.add(em3);
 
         List<employee> st = list.stream()
-        .map(
-            ls -> new employee(
-                ls.getSalary() * 10,
-                ls.getId(),
-                ls.getName()
-            )
-        )
+        .map(ls -> new employee(ls.getSalary()*20, ls.getId() ,ls.getName()))
         .collect(Collectors.toList());
 
         System.out.println("The list is: " + st);
