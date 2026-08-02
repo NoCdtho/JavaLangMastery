@@ -1,2 +1,2 @@
 # JavaLangMastery
-Not all topics are covered but trying to learn all the topics.
+Not all topics are covered but trying to cover all the topics.
